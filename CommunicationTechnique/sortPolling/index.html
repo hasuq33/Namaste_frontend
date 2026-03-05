@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harshiv Joshi</title>
+</head>
+<body>
+    <h1>Sort Polling Example</h1>
+    <div id="data-container"></div>
+    <script>
+        async function getData(){
+            try {
+                const response = await fetch("/getData")
+                const {data} = await response.json();
+                document.getElementById("data-container").innerHTML = data;
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        setInterval(async ()=>{
+            await getData();
+        },5000)
+    </script>
+</body>
+</html>
